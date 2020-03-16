@@ -4,6 +4,7 @@
 package isatty
 
 import (
+    "fmt"
 	"errors"
 	"strings"
 	"syscall"
@@ -35,6 +36,7 @@ func init() {
 
 // IsTerminal return true if the file descriptor is terminal.
 func IsTerminal(fd uintptr) bool {
+    fmt.Println("IsTerminal windows")
 	var st uint32
 	r, _, e := syscall.Syscall(procGetConsoleMode.Addr(), 2, fd, uintptr(unsafe.Pointer(&st)), 0)
 	return r != 0 && e == 0
@@ -98,6 +100,7 @@ func getFileNameByHandle(fd uintptr) (string, error) {
 // IsCygwinTerminal() return true if the file descriptor is a cygwin or msys2
 // terminal.
 func IsCygwinTerminal(fd uintptr) bool {
+    fmt.Println("IsCygwinTerminal windows")
 	if procGetFileInformationByHandleEx == nil {
 		name, err := getFileNameByHandle(fd)
 		if err != nil {

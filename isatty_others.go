@@ -10,12 +10,12 @@ import (
 // is always false on js and appengine classic which is a sandboxed PaaS.
 func IsTerminal(fd uintptr) bool {
     fmt.Println("IsTerminal Others")
-	return false
+	return true
 }
 
 // IsCygwinTerminal() return true if the file descriptor is a cygwin or msys2
 // terminal. This is also always false on this environment.
 func IsCygwinTerminal(fd uintptr) bool {
     fmt.Println("IsCygwinTerminal Others")
-	return false
+	return true
 }

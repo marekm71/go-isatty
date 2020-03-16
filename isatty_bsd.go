@@ -3,10 +3,14 @@
 
 package isatty
 
-import "golang.org/x/sys/unix"
+import (
+        "golang.org/x/sys/unix"
+        "fmt"
+)
 
 // IsTerminal return true if the file descriptor is terminal.
 func IsTerminal(fd uintptr) bool {
+    fmt.Println("IsTerminal BSD")
 	_, err := unix.IoctlGetTermios(int(fd), unix.TIOCGETA)
 	return err == nil
 }
@@ -14,5 +18,6 @@ func IsTerminal(fd uintptr) bool {
 // IsCygwinTerminal return true if the file descriptor is a cygwin or msys2
 // terminal. This is also always false on this environment.
 func IsCygwinTerminal(fd uintptr) bool {
+    fmt.Println("IsCygwinTerminal BSD")
 	return false
 }

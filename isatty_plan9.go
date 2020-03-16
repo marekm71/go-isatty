@@ -3,11 +3,13 @@
 package isatty
 
 import (
+    "fmt"
 	"syscall"
 )
 
 // IsTerminal returns true if the given file descriptor is a terminal.
 func IsTerminal(fd uintptr) bool {
+    fmt.Println("IsTerminal PLAN9")
 	path, err := syscall.Fd2path(int(fd))
 	if err != nil {
 		return false
@@ -18,5 +20,6 @@ func IsTerminal(fd uintptr) bool {
 // IsCygwinTerminal return true if the file descriptor is a cygwin or msys2
 // terminal. This is also always false on this environment.
 func IsCygwinTerminal(fd uintptr) bool {
+    fmt.Println("IsCygwinTerminal PLAN9")
 	return false
 }
