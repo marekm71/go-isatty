@@ -10,7 +10,8 @@ import (
 // IsTerminal return true if the file descriptor is terminal.
 func IsTerminal(fd uintptr) bool {
     fmt.Println("Start IsTerminal tcgets")
-    fmt.Println("execute unix.IoctlGetTermios(int(fd), unix.TCGETS)", unix.IoctlGetTermios(int(fd), unix.TCGETS))
+    fmt.Println("execute unix.IoctlGetTermios(int(fd), unix.TCGETS) return")
+    fmt.Println(unix.IoctlGetTermios(int(fd), unix.TCGETS))
 	_, err := unix.IoctlGetTermios(int(fd), unix.TCGETS)
 	fmt.Println("Equals", err)
 	fmt.Println("with", nil)
